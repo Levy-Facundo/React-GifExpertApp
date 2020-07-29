@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-export const AddCategory = ({setcategories}) => {
+export const AddCategory = ({setcategories, categories}) => {
     const [inputValue, setinputValue] = useState('');
     const handleInputChange = (e)=>{
         setinputValue(e.target.value)
@@ -8,14 +8,20 @@ export const AddCategory = ({setcategories}) => {
     const handleSubmit =(e)=>{
         e.preventDefault();
         if(inputValue.trim().length > 2){
-            setcategories (cats => [inputValue,...cats  ]);
-            setinputValue('');
+            const valor = categories.includes(inputValue);
+            if(!valor === true){
+              setcategories (cats => [inputValue,...cats  ]);
+                setinputValue('');  
+            } 
+            if(valor === true){
+                setinputValue('');
+            }
         }
         
     }
     return (
         <form onSubmit={handleSubmit}>
-            <h1>{inputValue}</h1>
+           {/*  <h1>{inputValue}</h1> */}
             <input 
                 type="text"
                 placeholder='Agregar una categoria'

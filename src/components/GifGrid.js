@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GifGridItem } from './GifGridItem';
 import { useFechGifs } from '../hooks/useFechGifs';
 
 
 export const GifGrid = ({category}) => {
     
-    
-    
-    const {data:images,loading} = useFechGifs(category);
+    const [limite, setlimite] = useState(12)
+    const moreGif = ()=>{
+        setlimite(20);
+        
+    }
+    const {data:images,loading} = useFechGifs(category,limite);
   
     
     return (
@@ -24,6 +27,7 @@ export const GifGrid = ({category}) => {
                     ))
                 }
             </div>}
+            <button onClick={ moreGif }>More..</button>
         </>
     )
 }
