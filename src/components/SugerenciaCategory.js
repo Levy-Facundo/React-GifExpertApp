@@ -11,7 +11,7 @@ export const SugerenciaCategory = ({setcategories}) => {
         setcategories (cats => [Simpsons,...cats ]);
     }
     const handleAddL =()=>{
-        setcategories (cats => [Libros,...cats  ]);
+        setcategories (cats => [Libros...cats ]);
     }
     return (
         <>
